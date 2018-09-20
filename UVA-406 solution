@@ -1,0 +1,54 @@
+#include<bits/stdc++.h>
+#define ll long long
+
+using namespace std;
+int arr[100010],ars[100010];
+int main()
+{
+    ll n,c,i,j,k,l,pos,print_elmnt,initial_point;
+    for(i=2; i <= 1000; i ++)
+    {
+        if(arr[i]==0)
+        {
+            for(j=2*i; j<=1000; j+=i)
+            {
+                arr[j]=1;
+            }
+        }
+    }
+    while (cin>>n>>c)
+    {
+        pos=1;
+        ars[0]=1;
+        for(i=2; i <= n; i ++)
+        {
+            if(arr[i]==0)
+            {
+                ars[pos]=i;
+                pos++;
+            }
+        }
+        if((pos)%2==0)
+            print_elmnt=2*c;
+        else
+            print_elmnt=(2*c)-1;
+        initial_point=(pos-print_elmnt)/2;
+        if(print_elmnt>=pos)
+
+        {
+            cout<<n<<" "<<c<<":"<<" ";
+
+            for(i=0; i <pos-1; i ++)
+                cout<<ars[i]<<" ";
+            cout<<ars[pos-1]<<endl;
+        }
+        else
+        {
+            cout<<n<<" "<<c<<":"<<" ";
+            for(i=initial_point; i<(print_elmnt+initial_point)-1; i ++)
+                cout<<ars[i]<<" ";
+            cout<<ars[print_elmnt+initial_point-1]<<endl;
+        }
+        cout<<endl;
+    }
+}
